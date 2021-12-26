@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import ItemCreator from './components/ItemCreator';
+import TodoList from './components/TodoList';
+import TodoFilter from './components/TodoFilter';
+import { RecoilRoot } from 'recoil';
+import TodoStats from './components/TodoStats';
+import UserData from './components/UserData';
+import { Suspense } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<RecoilRoot>
+			<Suspense fallback={<h1>loading...</h1>}>
+				<UserData />
+			</Suspense>
+			<TodoFilter />
+			<ItemCreator />
+			<TodoList />
+			<TodoStats />
+		</RecoilRoot>
+	);
 }
 
 export default App;
